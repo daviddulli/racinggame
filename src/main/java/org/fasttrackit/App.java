@@ -54,8 +54,6 @@ public class App
         System.out.println(car3.name);
         System.out.println(carReference2.name);
 
-
-
     }
 
 }
