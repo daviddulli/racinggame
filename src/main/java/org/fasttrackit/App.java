@@ -21,6 +21,14 @@ public class App
         carReference.running = false;
         carReference.doorCount = 2;
         carReference.traveledDistance = 50;
+        Engine carEngine = new Engine();
+        carEngine.manufacturer = "Renault";
+        carEngine.capacity = 1.5;
+        carReference.engine = carEngine;
+
+        System.out.println("Engine details...");
+        System.out.println("Manufacturer " + carReference.engine.manufacturer);
+        System.out.println("Capacity " + carReference.engine.capacity);
 
         Car carReference2 = new Car();
         carReference2.name = "BMW";
