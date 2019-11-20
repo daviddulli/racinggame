@@ -72,6 +72,10 @@ public class App
         System.out.println(car3.name);
         System.out.println(carReference2.name);
 
+//        System.out.println("Modulo example: ");
+//        System.out.println(4 % 2 == 0);
+//        System.out.println(4 % 3);
+
 
 
     }
