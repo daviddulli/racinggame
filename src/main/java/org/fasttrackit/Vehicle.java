@@ -13,6 +13,9 @@ public class Vehicle {
 
     public double accelerate(double speed, double durationInHours) {
         System.out.println(name + " is accelarating with " + speed + " for " + durationInHours + " h." );
+
+
+        //distance is local variable (declared inside a method)
         double distance = speed * durationInHours;
 
         traveledDistance = traveledDistance + distance;
