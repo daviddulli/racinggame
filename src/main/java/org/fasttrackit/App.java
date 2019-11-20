@@ -12,7 +12,16 @@ public class App
     {
         System.out.println( "Welcome to the Racing Game!" );
 
-        Car carReference = new Car();
+        Engine carEngine = new Engine();
+        carEngine.manufacturer = "Renault";
+        carEngine.capacity = 1.5;
+
+        Engine car2Engine = new Engine();
+        car2Engine.manufacturer = "Bavaria Motors";
+        car2Engine.capacity = 2;
+
+
+        Car carReference = new Car(carEngine);
         carReference.name = "Dacia";
         carReference.color = "Red";
         carReference.mileage = 9.8;
@@ -21,16 +30,14 @@ public class App
         carReference.running = false;
         carReference.doorCount = 2;
         carReference.traveledDistance = 50;
-        Engine carEngine = new Engine();
-        carEngine.manufacturer = "Renault";
-        carEngine.capacity = 1.5;
-        carReference.engine = carEngine;
+
+
 
         System.out.println("Engine details...");
         System.out.println("Manufacturer " + carReference.engine.manufacturer);
         System.out.println("Capacity " + carReference.engine.capacity);
 
-        Car carReference2 = new Car();
+        Car carReference2 = new Car(car2Engine);
         carReference2.name = "BMW";
         carReference2.mileage = 14;
         carReference2.color = null;
