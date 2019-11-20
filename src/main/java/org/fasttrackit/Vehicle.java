@@ -2,6 +2,10 @@ package org.fasttrackit;
 
 public class Vehicle {
 
+
+    //class variable
+    static int totalCount;
+
     String name;
     String color;
     double mileage;
@@ -10,6 +14,11 @@ public class Vehicle {
     double traveledDistance;
     boolean running;
 
+    public Vehicle() {
+
+        totalCount++;
+
+    }
 
     public double accelerate(double speed, double durationInHours) {
         System.out.println(name + " is accelarating with " + speed + " for " + durationInHours + " h." );
