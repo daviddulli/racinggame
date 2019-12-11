@@ -132,6 +132,9 @@ public class Game {
             throw new Exception("You have selected a non-exisiting track.");
 
         }
+//        finally {
+//            System.out.println("Always executed.");
+//        }
     }
 
 
