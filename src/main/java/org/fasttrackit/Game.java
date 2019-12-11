@@ -1,23 +1,30 @@
 package org.fasttrackit;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Game {
 
 
     private Track[] tracks = new Track[3];
+    private List<Vehicle> competitors = new ArrayList<>();
+
 
 
     public void start() {
         initializeTracks();
         displayTracks();
-        System.out.println("Starting game...");
 
-        int playerCount = getPlayerCountFromUser();
-        System.out.println("Number of players: " + playerCount);
+        initializeCompetitors();
 
-        String vehicleName = getVehicleNameFromUser();
-        System.out.println("Name from user: " + vehicleName);
+        for (Vehicle vehicle : competitors){
+
+            System.out.println("It's " + vehicle.getName() + " 's turn.");
+
+        }
+
     }
 
     private void displayTracks() {
@@ -31,6 +38,27 @@ public class Game {
 //                System.out.println(tracks[i].toString(i)); - costumized output with method
                 System.out.println((i + 1) + ". " + tracks[i].getName() + " - " + tracks[i].getLenght() + " km");
             }
+        }
+
+    }
+
+    private void initializeCompetitors(){
+
+        int playerCount = getPlayerCountFromUser();
+        System.out.println("Number of players: " + playerCount);
+        for (int i = 1; i <= playerCount; i++){
+
+            System.out.println("Adding player " + i);
+            Vehicle vehicle = new Vehicle();
+            vehicle.setName(getVehicleNameFromUser());
+            vehicle.setFuelLevel(80);
+            vehicle.setMileage(ThreadLocalRandom.current().nextDouble(6, 15));
+            vehicle.setMaxSpeed(300);
+
+
+            System.out.println("Vehicle for player " + i ": " + vehicle.getName() + " - Mileage: " + vehicle.getMileage());
+
+            competitors.add(vehicle);
         }
 
     }
