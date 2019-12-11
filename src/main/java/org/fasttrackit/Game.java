@@ -17,13 +17,31 @@ public class Game {
         initializeTracks();
         displayTracks();
 
+        Track selectedTrack = getSelectedTrackFromUser();
+
         initializeCompetitors();
 
         for (Vehicle vehicle : competitors){
 
-            System.out.println("It's " + vehicle.getName() + " 's turn.");
+            System.out.println("It's " + vehicle.getName() + "'s turn.");
+            double speed = getAccelerationSpeedFromUser();
+            vehicle.accelerate(speed);
 
+            if(vehicle.getTraveledDistance() >= selectedTrack.getLenght())
+            {
+
+                System.out.println("The winner is " + vehicle.getName());
+                break;
+            }
         }
+
+    }
+
+    private double getAccelerationSpeedFromUser(){
+
+        System.out.println("Please enter acceleration speed...");
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextDouble();
 
     }
 
@@ -56,7 +74,7 @@ public class Game {
             vehicle.setMaxSpeed(300);
 
 
-            System.out.println("Vehicle for player " + i ": " + vehicle.getName() + " - Mileage: " + vehicle.getMileage());
+            System.out.println("Vehicle for player " + i + ": " + vehicle.getName() + " - Mileage: " + vehicle.getMileage());
 
             competitors.add(vehicle);
         }
@@ -77,6 +95,8 @@ public class Game {
 
     }
 
+
+
     private String getVehicleNameFromUser() {
         System.out.println("Please enter vehicle name.");
         Scanner scanner = new Scanner(System.in);
@@ -88,5 +108,19 @@ public class Game {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
     }
+
+    private Track getSelectedTrackFromUser(){
+
+        System.out.println("Please enter the chosen track's number...");
+        Scanner scanner = new Scanner(System.in);
+        int selectedTrackNumber;
+        selectedTrackNumber = scanner.nextInt() - 1;
+        Track selectedTrack = new Track();
+        selectedTrack = tracks[selectedTrackNumber];
+        System.out.println("Youve selected: " + selectedTrack.getName());
+        return selectedTrack;
+    }
+
+
 
 }
