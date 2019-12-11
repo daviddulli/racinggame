@@ -1,6 +1,8 @@
 package org.fasttrackit;
 
+import javax.imageio.metadata.IIOMetadata;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
@@ -13,7 +15,7 @@ public class Game {
 
 
 
-    public void start() {
+    public void start() throws Exception {
         initializeTracks();
         displayTracks();
 
@@ -29,7 +31,6 @@ public class Game {
 
             if(vehicle.getTraveledDistance() >= selectedTrack.getLenght())
             {
-
                 System.out.println("The winner is " + vehicle.getName());
                 break;
             }
@@ -109,16 +110,28 @@ public class Game {
         return scanner.nextInt();
     }
 
-    private Track getSelectedTrackFromUser(){
+    private Track getSelectedTrackFromUser() throws Exception {
 
         System.out.println("Please enter the chosen track's number...");
         Scanner scanner = new Scanner(System.in);
-        int selectedTrackNumber;
-        selectedTrackNumber = scanner.nextInt() - 1;
-        Track selectedTrack = new Track();
-        selectedTrack = tracks[selectedTrackNumber];
-        System.out.println("Youve selected: " + selectedTrack.getName());
-        return selectedTrack;
+
+        try {
+
+            int selectedTrackNumber = scanner.nextInt();
+            Track selectedTrack = new Track();
+            selectedTrack = tracks[selectedTrackNumber - 1];
+            System.out.println("Youve selected: " + selectedTrack.getName());
+            return selectedTrack;
+
+        } catch (InputMismatchException e) {
+
+            throw new RuntimeException("You have entered an invalid value.");
+
+        } catch (ArrayIndexOutOfBoundsException e){
+
+            throw new Exception("You have selected a non-exisiting track.");
+
+        }
     }
 
 

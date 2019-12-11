@@ -8,8 +8,7 @@ package org.fasttrackit;
 
 public class App 
 {
-    public static void main( String[] args )
-    {
+    public static void main( String[] args ) throws Exception {
         System.out.println( "Welcome to the Racing Game!" );
         //method implementation taken from object's class, not from variable's class
         Game game = new Game();
